@@ -1,2 +1,3 @@
 # python-data-structures-and-algorithms
-[test link](challenges/array_shift)
+## Table of Contents
+[Array Shift](challenges/array_shift)
