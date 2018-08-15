@@ -1,2 +1,2 @@
 # python-data-structures-and-algorithms
-[test link](challenges/array_shift/README.md)
+[test link](challenges/array_shift)
