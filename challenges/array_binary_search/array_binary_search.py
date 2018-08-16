@@ -1,4 +1,5 @@
 def binary_search(arr, k):
+    """This function uses the binary search algorithm to split up the array in such a way that half of it can be discarded at each iteration."""
     if not len(arr):
         return -1
 
