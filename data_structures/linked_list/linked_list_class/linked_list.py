@@ -99,3 +99,15 @@ class LinkedList(object):
             current_node = current_node._next
 
         return False
+
+    def kth_from_end(self, k):
+        """Finds and returns value of node that k nodes from the end of the linked list
+        """
+        current = self.head
+        values = []
+
+        while current:
+            values += [current.val]
+            current = current._next
+
+        return values[-k]
