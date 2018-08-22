@@ -121,3 +121,19 @@ def test_insert_before_modifies_list_as_expected(small_list):
         print(small_list)
     output = out.getvalue().strip()
     assert output == '(Head: 1) -> (Next: 5) -> (Next: 2) -> (Next: 3) -> (Next: 4) -> (Next: None)'
+
+
+def test_kth_from_end_returns_value_kth_from_end(small_list):
+    expected = 3
+    actual = small_list.kth_from_end(2)
+    assert expected == actual
+
+
+def test_kth_from_end_raises_exception_with_negative_input(small_list):
+    with pytest.raises(Exception) as e_info:
+        small_list.kth_from_end(-6)
+
+
+def test_kth_from_end_raises_exception_with_input_greater_than_list_length(small_list):
+    with pytest.raises(Exception) as e_info:
+        small_list.kth_from_end(29186)
