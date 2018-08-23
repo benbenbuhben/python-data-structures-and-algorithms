@@ -42,13 +42,16 @@ class LinkedList(object):
     def append(self, value):
         """Adds value to end of LinkedList
         """
-        current = self.head
+        if not self.head:
+            self.head = Node(value)
+        else:
+            current = self.head
 
-        while current._next:
-            current = current._next
+            while current._next:
+                current = current._next
 
-        node = Node(value)
-        current._next = node
+            node = Node(value)
+            current._next = node
 
         self.len += 1
 
