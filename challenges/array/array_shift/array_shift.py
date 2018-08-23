@@ -8,4 +8,4 @@ def insert_shift_array(arr, n):
 
     arr[len(arr)//2] = n
 
- return arr
+    return arr

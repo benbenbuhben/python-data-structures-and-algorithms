@@ -29,3 +29,5 @@ Write a method for the Linked List class which takes a number, k, as a parameter
 *(NOTE: This was the whiteboard done by my group. This was the progress we made with the timeframe alotted.*
 ![Solution](/assets/ll_kth_from_end.jpeg)
 
+## Big-O
+Time - O(n), Space - O(1)
