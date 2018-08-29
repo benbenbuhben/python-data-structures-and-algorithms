@@ -34,22 +34,22 @@ class Queue:
             Return: Node
         """
         if not self.front:
-          self.front = Node(value)
+            self.front = Node(value)
         else:
-          newNode = Node(value)
-          current = self.front
-          while current._next:
-            current = current._next
-          current._next = newNode
-          # self.front = Node(self.front, newNode)
-          self.back = Node(value)
+            newNode = Node(value)
+            current = self.front
+            while current._next:
+                current = current._next
+            current._next = newNode
+            # self.front = Node(self.front, newNode)
+            self.back = Node(value)
 
         self._length += 1
 
         return self.front
 
     def dequeue(self):
-        """
+        """Method that removes and returns the first value in the queue
         """
         tmp = self.front
         self.front = tmp._next
@@ -59,6 +59,6 @@ class Queue:
         return tmp.value
 
     def peek(self):
-        """
+        """Method to see what the queue looks like. Should this return a value or a node?
         """
         return self.front

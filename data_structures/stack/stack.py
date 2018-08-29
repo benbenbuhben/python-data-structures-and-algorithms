@@ -39,7 +39,7 @@ class Stack:
         return self.top
 
     def pop(self):
-        """
+        """Method that removes and returns top value in the stack.
         """
         tmp = self.top
         self.top = tmp._next
@@ -49,6 +49,6 @@ class Stack:
         return tmp.value
 
     def peek(self):
-        """
+        """Method to see what the queue looks like. Should this return a value or a node?
         """
         return self.top
