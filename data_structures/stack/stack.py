@@ -1,13 +1,4 @@
-class Node:
-    def __init__(self, value, _next=None):
-        self.value = value
-        self._next = _next
-
-    def __repr__(self):
-        pass
-
-    def __str__(self):
-        pass
+from .node import Node
 
 
 class Stack:
@@ -19,10 +10,19 @@ class Stack:
         pass
 
     def __str__(self):
-        pass
+        """Magic Method that returns a nicely formatted display of LinkedList
+        """
+        current_node = self.top
+        output = f'(Head: {self.top})'
+        while current_node:
+            current_node = current_node._next
+            output += f' -> (Next: {current_node})'
+        return output + ''
 
     def __len__(self):
-        pass
+        """Magic method to return length of LinkedList
+        """
+        return self._length
 
     def push(self, value):
         """Method which accepts a value of any type and creates a new Node in the Stack instance.
@@ -39,7 +39,7 @@ class Stack:
         return self.top
 
     def pop(self):
-        """
+        """Method that removes and returns top value in the stack.
         """
         tmp = self.top
         self.top = tmp._next
@@ -49,6 +49,6 @@ class Stack:
         return tmp.value
 
     def peek(self):
-        """
+        """Method to see what the queue looks like. Should this return a value or a node?
         """
         return self.top
