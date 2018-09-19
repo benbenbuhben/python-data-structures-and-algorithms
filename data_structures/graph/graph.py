@@ -4,6 +4,7 @@ from ..queue.queue import Queue
 class Graph:
     def __init__(self):
         self.graph = {}
+        self.weighted = False
 
     def __repr__(self):
         return 'Graph: {}'.format(self.graph)
@@ -30,11 +31,12 @@ class Graph:
         else:
             return False
 
-    def add_edge(self, v1, v2, weight=None):
+    def add_edge_undirected(self, v1, v2, weight=None):
         """Add a relationship and weight between two vertices.
         """
         if self.has_vert(v1) and self.has_vert(v2):
             if weight:
+                self.weighted = True
                 new_neighbor = {}
                 new_neighbor[v2] = weight
                 self.graph[v1].append(new_neighbor)
@@ -44,11 +46,36 @@ class Graph:
         else:
             return False
 
+    def add_edge_directed(self, v1, v2, weight=None):
+        """Add a relationship and weight between two vertices.
+        """
+        if self.has_vert(v1) and self.has_vert(v2):
+            if weight:
+                self.weighted = True
+                new_neighbor1 = {}
+                new_neighbor1[v2] = weight
+                new_neighbor2 = {}
+                new_neighbor2[v1] = weight
+                self.graph[v1].append(new_neighbor1)
+                self.graph[v2].append(new_neighbor2)
+                return True
+            else:
+                self.graph[v1].append(v2)
+                self.graph[v2].append(v1)
+        else:
+            return False
+
     def get_neighbors(self, name):
         """Given a name (key), return all adjacent vertices.
         """
         if self.has_vert(name):
-            return self.graph[name]
+            if not self.weighted:
+                return self.graph[name]
+            else:
+                output = []
+                for el in self.graph[name]:
+                    output.append(list(el.keys())[0])
+                return output
         else:
             raise KeyError
 

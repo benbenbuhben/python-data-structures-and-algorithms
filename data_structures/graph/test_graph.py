@@ -20,14 +20,14 @@ def filled_graph():
     g.add_vert('D')
     g.add_vert('E')
     g.add_vert('F')
-    g.add_edge('A', 'B')
-    g.add_edge('B', 'C')
-    g.add_edge('B', 'D')
-    g.add_edge('C', 'D')
-    g.add_edge('C', 'E')
-    g.add_edge('C', 'F')
-    g.add_edge('D', 'F')
-    g.add_edge('E', 'F')
+    g.add_edge_undirected('A', 'B')
+    g.add_edge_undirected('B', 'C')
+    g.add_edge_undirected('B', 'D')
+    g.add_edge_undirected('C', 'D')
+    g.add_edge_undirected('C', 'E')
+    g.add_edge_undirected('C', 'F')
+    g.add_edge_undirected('D', 'F')
+    g.add_edge_undirected('E', 'F')
     return g
 
 
@@ -40,14 +40,14 @@ def filled_weighted_graph():
     g.add_vert('D')
     g.add_vert('E')
     g.add_vert('F')
-    g.add_edge('A', 'B', 5)
-    g.add_edge('B', 'C', 10)
-    g.add_edge('B', 'D', 15)
-    g.add_edge('C', 'D', 20)
-    g.add_edge('C', 'E', 25)
-    g.add_edge('C', 'F', 30)
-    g.add_edge('D', 'F', 35)
-    g.add_edge('E', 'F', 40)
+    g.add_edge_undirected('A', 'B', 5)
+    g.add_edge_undirected('B', 'C', 10)
+    g.add_edge_undirected('B', 'D', 15)
+    g.add_edge_undirected('C', 'D', 20)
+    g.add_edge_undirected('C', 'E', 25)
+    g.add_edge_undirected('C', 'F', 30)
+    g.add_edge_undirected('D', 'F', 35)
+    g.add_edge_undirected('E', 'F', 40)
     return g
 
 @contextmanager
@@ -72,7 +72,7 @@ def test_graph_exists():
 def test_graph_adds_edge(filled_graph):
     """Test graph adds edge
     """
-    filled_graph.add_edge('F', 'A')
+    filled_graph.add_edge_undirected('F', 'A')
     assert filled_graph.graph == {'A': ['B'], 'B': ['C', 'D'], 'C': ['D', 'E', 'F'], 'D': ['F'], 'E': ['F'], 'F': ['A']}
 
 
