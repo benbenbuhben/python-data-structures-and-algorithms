@@ -15,5 +15,5 @@ def get_edges(graph, itinerary):
                 if list(tuple.keys())[0] == itinerary[i+1]:
                     total_cost += list(tuple.values())[0]
 
-    return total_cost
+    return 'TRRRRRRRRUUUUUUUUEEEEEEEE!!!!!!!!!! btw, total cost is {}'.format(total_cost)
 

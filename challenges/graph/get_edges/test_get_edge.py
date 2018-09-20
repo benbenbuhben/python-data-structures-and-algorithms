@@ -55,7 +55,7 @@ def test_get_edge_returns_cost_when_direct_flights_available_case1(filled_weight
     """
     itinerary = ['Arendelle', 'Monstropolis', 'Naboo']
     actual = get_edges(filled_weighted_graph, itinerary)
-    assert actual == 115
+    assert actual == 'TRRRRRRRRUUUUUUUUEEEEEEEE!!!!!!!!!! btw, total cost is 115'
 
 
 def test_get_edge_returns_cost_when_direct_flights_available_case2(filled_weighted_graph):
@@ -63,6 +63,6 @@ def test_get_edge_returns_cost_when_direct_flights_available_case2(filled_weight
     """
     itinerary = ['Metroville', 'Pandora']
     actual = get_edges(filled_weighted_graph, itinerary)
-    assert actual == 82
+    assert actual == 'TRRRRRRRRUUUUUUUUEEEEEEEE!!!!!!!!!! btw, total cost is 82'
 
 
