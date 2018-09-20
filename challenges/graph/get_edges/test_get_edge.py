@@ -1,6 +1,6 @@
 import pytest
 from data_structures.graph.graph import Graph
-from challenges.graph.get_edges import get_edges
+from challenges.graph.get_edges.get_edges import get_edges
 
 
 @pytest.fixture()

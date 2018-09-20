@@ -19,17 +19,23 @@ def filled_graph():
     g.add_vert('F')
     g.add_vert('G')
     g.add_vert('H')
-    g.add_edge_undirected('A', 'B')
-    g.add_edge_undirected('A', 'D')
-    g.add_edge_undirected('B', 'C')
-    g.add_edge_undirected('B', 'D')
-    g.add_edge_undirected('C', 'G')
-    g.add_edge_undirected('D', 'E')
-    g.add_edge_undirected('D', 'F')
-    g.add_edge_undirected('D', 'H')
-    g.add_edge_undirected('F', 'H')
+    g.add_edge_directed('A', 'B')
+    g.add_edge_directed('A', 'D')
+    g.add_edge_directed('B', 'C')
+    g.add_edge_directed('B', 'D')
+    g.add_edge_directed('C', 'G')
+    g.add_edge_directed('D', 'E')
+    g.add_edge_directed('D', 'F')
+    g.add_edge_directed('D', 'H')
+    g.add_edge_directed('H', 'F')
     return g
 
+@pytest.fixture()
+def empty_graph():
+    """Pytest fixture for an empty graph.
+    """
+    g = Graph()
+    return g
 
 @contextmanager
 def captured_output():
@@ -43,9 +49,24 @@ def captured_output():
         sys.stdout, sys.stderr = old_out, old_err
 
 
-def test_ll_merge_zips_two_empty_lists(empty_list1, empty_list2):
-    actual = depth_first(filled_graph, 'A')
+def test_module_imported_properly():
+    """Test that the depth_first() function was imported properly.
+    """
+    return depth_first
+
+
+def test_depth_first_works(filled_graph):
+    """Test that the function works on the example provided in the assignment.
+    """
     with captured_output() as (out, err):
-        print(actual)
+        depth_first(filled_graph, 'A')
     output = out.getvalue().strip()
-    assert output == '(Head: None)'
+    assert output == 'A\nB\nC\nG\nD\nE\nF\nH'
+
+
+def test_root_not_in_graph_raises_exception(empty_graph):
+    """Test that the function raises an exception when passed a root that does not exists in the graph.
+    """
+    with pytest.raises(Exception):
+        depth_first(empty_graph, 'A')
+
