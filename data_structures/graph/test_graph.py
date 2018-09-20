@@ -113,6 +113,6 @@ def test_returns_length_empty(empty_graph):
 
 def test_breadth_first_works(filled_graph):
     with captured_output() as (out, err):
-        print(filled_graph.breadth_first('A'))
+        filled_graph.breadth_first('A')
     output = out.getvalue().strip()
-    assert output == 'A\nB\nC\nD\nE\nF\nNone'
+    assert output == 'A\nB\nC\nD\nE\nF'
