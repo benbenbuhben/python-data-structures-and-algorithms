@@ -28,9 +28,12 @@ class HashTable:
             key: the key to store
             value: the value to store
         """
-        index = self._hash_key(key)
-        self.hashtable[index] = value
-        self.entries_count += 1
+        try:
+            index = self._hash_key(key)
+            self.hashtable[index] = value
+            self.entries_count += 1
+        except TypeError:
+            return 'Set method only accepts strings as keys'
 
     def _get(self, key):
         """Retrieve a value from the hash table by key.
@@ -41,8 +44,8 @@ class HashTable:
         try:
             index = self._hash_key(key)
             return self.hashtable[index]
-        except KeyError:
-            return False
+        except TypeError:
+            return 'Get method only accepts strings as keys'
 
     def _remove(self, key):
         """Retrieve and remove a value from the hash table by key.
@@ -50,8 +53,11 @@ class HashTable:
             key: a string to find the value in the hash table
         returns: the value stored with the key
         """
-        index = self._hash_key(key)
-        value = self.hashtable[index]
-        self.hashtable[index] = None
-        self.entries_count -= 1
-        return value
+        try:
+            index = self._hash_key(key)
+            value = self.hashtable[index]
+            self.hashtable[index] = None
+            self.entries_count -= 1
+            return value
+        except TypeError:
+            return 'Remove method only accepts strings as keys'

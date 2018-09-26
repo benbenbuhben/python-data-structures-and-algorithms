@@ -74,12 +74,26 @@ def test_get_works(populated_hash_table):
     assert value == 6185305358
 
 
+def test_get_fails_with_numeric_key(populated_hash_table):
+    """Test get method returns error message when given non-string key
+    """
+    value = populated_hash_table._get(98712)
+    assert value == 'Get method only accepts strings as keys'
+
+
 def test_setting_a_new_value(populated_hash_table):
     """Test set method on puts a key value pair into the hash table
     """
     populated_hash_table._set('Lorenzo', 9264950271)
     value = populated_hash_table._get('Lorenzo')
     assert value == 9264950271
+
+
+def test_set_fails_with_numeric_key(populated_hash_table):
+    """Test get method on hash returns error message with numeric key
+    """
+    value = populated_hash_table._set(397213, 120921)
+    assert value == 'Set method only accepts strings as keys'
 
 
 def test_deleting_a_key(populated_hash_table):
@@ -91,8 +105,14 @@ def test_deleting_a_key(populated_hash_table):
     assert populated_hash_table._get('Cisco') is None
 
 
+def test_delete_method_fails_with_numeric_key(populated_hash_table):
+    """Test delete method returns error message when given non-string key.
+    """
+    deleted_value = populated_hash_table._remove(98613)
+    assert deleted_value == 'Remove method only accepts strings as keys'
+
+
 def test_len_works(populated_hash_table):
     """Test magic method len() works as expected
     """
     assert len(populated_hash_table) == 4
-
