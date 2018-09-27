@@ -22,16 +22,25 @@ class HashTable:
                 self.alphabet_size, len(key) - i - 1) * ord(c)
         return hash_ % self.size
 
-    def _set(self, key, value):
+    def _set(self, key, value=1):
         """Add a key and value into the hash table.
         args:
             key: the key to store
             value: the value to store
         """
+        # This probably needs to be updated so that key/value pairs are stored in an array or linked list. Or if you wanna be a badass, have the data structure as a variable input.
         try:
             index = self._hash_key(key)
-            self.hashtable[index] = value
-            self.entries_count += 1
+            key_value = [key, value]
+            if self.hashtable[index] is None:
+                self.hashtable[index] = [key_value]
+                self.entries_count += 1
+            else:
+                for el in self.hashtable[index]:
+                    if el[0] == key:
+                        el[1] = value
+                        return 'Updated Value'
+                self.hashtable[index].append([key_value])
         except TypeError:
             return 'Set method only accepts strings as keys'
 
@@ -43,7 +52,12 @@ class HashTable:
         """
         try:
             index = self._hash_key(key)
-            return self.hashtable[index]
+            if self.hashtable[index] is not None:
+                for el in self.hashtable[index]:
+                    if el[0] == key:
+                        return el[1]
+            else:
+                return None
         except TypeError:
             return 'Get method only accepts strings as keys'
 
@@ -55,9 +69,13 @@ class HashTable:
         """
         try:
             index = self._hash_key(key)
-            value = self.hashtable[index]
-            self.hashtable[index] = None
-            self.entries_count -= 1
-            return value
+            if self.hashtable[index] is not None:
+                for i, el in enumerate(self.hashtable[index]):
+                    if el[0] == key:
+                        value = el[1]
+                        self.hashtable[index].pop(i)
+                        self.entries_count -= 1
+                        return value
+                return None
         except TypeError:
             return 'Remove method only accepts strings as keys'
