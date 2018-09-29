@@ -1,5 +1,5 @@
 import pytest
-from challenges.hash_tables.repeated_word import repeated_word
+from challenges.hash_tables.repeated_word.repeated_word import repeated_word
 
 
 def test_module_exists():
