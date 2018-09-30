@@ -9,7 +9,8 @@ def repeated_word(text):
     cleaned_text = re.sub('\W+', ' ', text)
     words = cleaned_text.split()
     for word in words:
-        result = h._set(word.lower())
-        if result == 'Updated Value':
+        if h._get(word.lower()):
             return word
+        h._set(word.lower())
+
     return False

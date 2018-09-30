@@ -16,7 +16,7 @@ class Graph:
         return len(self.graph.items())
 
     def add_vert(self, name):
-        """Use val to create new Vertice and add vertice to graph.
+        """Use val to create new vertex and add it to graph.
         """
         if name not in self.graph:
             self.graph[name] = []
@@ -52,10 +52,8 @@ class Graph:
         if self.has_vert(v1) and self.has_vert(v2):
             if weight:
                 self.weighted = True
-                new_neighbor1 = {}
-                new_neighbor1[v2] = weight
-                new_neighbor2 = {}
-                new_neighbor2[v1] = weight
+                new_neighbor1 = {v2: weight}
+                new_neighbor2 = {v1: weight}
                 self.graph[v1].append(new_neighbor1)
                 self.graph[v2].append(new_neighbor2)
                 return True
