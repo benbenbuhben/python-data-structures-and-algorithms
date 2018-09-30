@@ -3,9 +3,10 @@ class HashTable:
     entries_count = 0
     alphabet_size = 52
 
-    def __init__(self, size=8192):
+    def __init__(self, size=8192, allow_collisions=True):
         self.size = size
         self.hashtable = [None] * self.size
+        self.allow_collisions = allow_collisions
 
     def __len__(self):
         return self.entries_count
@@ -30,6 +31,8 @@ class HashTable:
         """
         # This probably needs to be updated so that key/value pairs are stored in an array or linked list. Or if you wanna be a badass, have the data structure as a variable input.
         try:
+            if type(key) == 'int':
+                key = str(key)
             index = self._hash_key(key)
             key_value = [key, value]
             if self.hashtable[index] is None:
@@ -38,8 +41,11 @@ class HashTable:
             else:
                 for el in self.hashtable[index]:
                     if el[0] == key:
-                        el[1] = value
-                        return 'Updated Value'
+                        if self.allow_collisions:
+                            el[1] = value
+                            return 'Updated Value'
+                        else:
+                            return 'Collision Not Allowed'
                 self.hashtable[index].append([key_value])
         except TypeError:
             return 'Set method only accepts strings as keys'
