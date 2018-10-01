@@ -19,13 +19,14 @@ class BinaryTree:
         results = []
 
         def _walk(node):
-            results.append(node.value)
+            results.append(node.val)
             if node.left:
                 _walk(node.left)
             if node.right:
                 _walk(node.right)
 
-        _walk(self.root)
+        if self.root:
+            _walk(self.root)
 
         return results
 
@@ -39,7 +40,7 @@ class BinaryTree:
                 _walk(node.left)
             if node.right:
                 _walk(node.right)
-            results.append(node.value)
+            results.append(node.val)
 
         _walk(self.root)
 
@@ -54,7 +55,7 @@ class BinaryTree:
             if node.left:
                 _walk(node.left)
 
-            results.append(node.value)
+            results.append(node.val)
 
             if node.right:
                 _walk(node.right)

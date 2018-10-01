@@ -2,7 +2,9 @@ from data_structures.hash_table.hash_table import HashTable
 
 
 def tree_intersection(tree1, tree2):
-    h = HashTable(allow_collsions=False)
+    """Function that returns common values in two binary trees
+    """
+    h = HashTable(allow_collisions=False)
     common_nodes = []
     nodes1 = tree1.pre_order()
     for node in nodes1:
